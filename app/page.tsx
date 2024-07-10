@@ -1,11 +1,10 @@
 import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code";
+
 import { Image } from "@nextui-org/image";
 import { Divider } from "@nextui-org/divider";
 import { button as buttonStyles } from "@nextui-org/theme";
 
-import { title, subtitle } from "@/components/primitives";
+import { title } from "@/components/primitives";
 import NextImage from "next/image";
 
 export default function Home() {
