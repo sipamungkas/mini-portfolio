@@ -7,6 +7,7 @@ import { button as buttonStyles } from "@nextui-org/theme";
 import { title } from "@/components/primitives";
 import NextImage from "next/image";
 import ProjectItem from "@/components/project-item";
+import PostItem from "@/components/post-item";
 
 export default function Home() {
   return (
@@ -133,8 +134,22 @@ export default function Home() {
       </div>
 
       <div className="mt-8 lg:mt-20 w-full">
-        <h2 className={title({ size: "sm" })}>Latest Projects</h2>
-        <div className="mt-8 grid grid-cols-2 gap-8">
+        <div className="flex justify-between items-center flex-row">
+          <h2 className={title({ size: "sm" })}>Latest Projects</h2>
+          <Link
+            isExternal
+            size="lg"
+            className={buttonStyles({
+              color: undefined,
+              radius: "full",
+              variant: "ghost",
+            })}
+            href={"/projects"}
+          >
+            View All
+          </Link>
+        </div>
+        <div className="mt-8 grid md:grid-cols-2 gap-8">
           <ProjectItem
             stack="React Native, Socket.io, ReactJS, ExpressJs, Firebase, Typescript"
             image="/images/projects/dl/cover.png"
@@ -146,6 +161,31 @@ export default function Home() {
             image="/images/projects/dl/cover.png"
             title="Daily Language"
             description="Interactiveive stats tracking, real-time text messaging, and real-time voice chat functionalities, ensuring an immersive and effective learning experience using react native, reactjs and express.js"
+          />
+        </div>
+      </div>
+
+      <div className="mt-8 lg:mt-20 w-full">
+        <div className="flex justify-between items-center flex-row">
+          <h2 className={title({ size: "sm" })}>Recent Posts</h2>
+          <Link
+            isExternal
+            size="lg"
+            className={buttonStyles({
+              color: undefined,
+              radius: "full",
+              variant: "ghost",
+            })}
+            href={"/blog"}
+          >
+            View All
+          </Link>
+        </div>
+        <div className="mt-8 flex flex-col gap-8">
+          <PostItem
+            title="Krealogi — UX Case Study Simple CRM (Customer Relationship Management)"
+            description="This time I will briefly review the UX Case Study of the Krealogi application for the Android platform. The UX Case study I discuss in this article focuses on the Simple CRM (Customer Relationship Management) feature"
+            date="2021-11-20T00:00:00.000Z"
           />
         </div>
       </div>
