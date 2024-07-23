@@ -13,7 +13,10 @@ export type PostItemProps = {
 function PostItem({ title, description, date }: PostItemProps) {
   return (
     <Link href="https://sipamungkas.medium.com/krealogi-ux-case-study-simple-crm-customer-relationship-management-3744b1deda40">
-      <Card className="w-full p-0 border-b-1 hover:scale-105 pb-2 border-[#b249f8] rounded-none bg-transparent">
+      <Card
+        shadow="none"
+        className="w-full p-0 border-b-1 hover:scale-105 pb-2 border-[#b249f8] rounded-none light:bg-transparent dark:bg-transparent"
+      >
         <CardHeader className="px-0 w-full">
           <div className="flex flex-1 flex-col md:flex-row md:items-center md:justify-between">
             <h4 className="font-bold text-large">{title}</h4>
