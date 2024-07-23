@@ -19,7 +19,7 @@ const ProjectItem = ({
   return (
     <Card
       isBlurred
-      className="border-none bg-background/60 dark:bg-default-100/50 w-full"
+      className="border-none bg-background/60 dark:bg-default-100/50 w-full hover:scale-105"
       shadow="sm"
       isPressable
       isHoverable
