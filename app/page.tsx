@@ -6,6 +6,7 @@ import { button as buttonStyles } from "@nextui-org/theme";
 
 import { title } from "@/components/primitives";
 import NextImage from "next/image";
+import ProjectItem from "@/components/project-item";
 
 export default function Home() {
   return (
@@ -128,6 +129,24 @@ export default function Home() {
             </li>
           </ul>
           <Divider className="mt-8 md:mt-12 h-0.5" />
+        </div>
+      </div>
+
+      <div className="mt-8 lg:mt-20 w-full">
+        <h2 className={title({ size: "sm" })}>Latest Projects</h2>
+        <div className="mt-8 grid grid-cols-2 gap-8">
+          <ProjectItem
+            stack="React Native, Socket.io, ReactJS, ExpressJs, Firebase, Typescript"
+            image="/images/projects/dl/cover.png"
+            title="Daily Language"
+            description="Interactive English course mobile app featuring comprehensive stats tracking, real-time text messaging, and real-time voice chat functionalities, ensuring an immersive and effective learning experience using react native, reactjs and express.js"
+          />
+          <ProjectItem
+            stack="React Native, Socket.io, ReactJS, ExpressJs, Firebase, Typescript"
+            image="/images/projects/dl/cover.png"
+            title="Daily Language"
+            description="Interactiveive stats tracking, real-time text messaging, and real-time voice chat functionalities, ensuring an immersive and effective learning experience using react native, reactjs and express.js"
+          />
         </div>
       </div>
     </section>

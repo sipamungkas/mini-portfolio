@@ -279,6 +279,21 @@
     "@react-types/button" "3.9.4"
     "@react-types/shared" "3.23.1"
 
+"@nextui-org/card@^2.0.31":
+  version "2.0.31"
+  resolved "https://registry.yarnpkg.com/@nextui-org/card/-/card-2.0.31.tgz#562fc8e60013045bb2dc8322345eef32fa84fa0a"
+  integrity sha512-KXeI4xu0HVOgC2sNBxv+OGbzYy+kA6HbsDB677j3R+MhyCrqCLsE5ahkn7FRWgIJAzoDkcHSunmc+q9ApoSWig==
+  dependencies:
+    "@nextui-org/react-utils" "2.0.14"
+    "@nextui-org/ripple" "2.0.30"
+    "@nextui-org/shared-utils" "2.0.5"
+    "@nextui-org/use-aria-button" "2.0.9"
+    "@react-aria/button" "3.9.5"
+    "@react-aria/focus" "3.17.1"
+    "@react-aria/interactions" "3.21.3"
+    "@react-aria/utils" "3.24.1"
+    "@react-types/shared" "3.23.1"
+
 "@nextui-org/code@2.0.29":
   version "2.0.29"
   resolved "https://registry.yarnpkg.com/@nextui-org/code/-/code-2.0.29.tgz#6c3bb0540f70a2b4f21cff3fdc2d6b70270bc724"
