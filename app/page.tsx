@@ -137,7 +137,6 @@ export default function Home() {
         <div className="flex justify-between items-center flex-row">
           <h2 className={title({ size: "sm" })}>Latest Projects</h2>
           <Link
-            isExternal
             size="lg"
             className={buttonStyles({
               color: undefined,
@@ -169,7 +168,6 @@ export default function Home() {
         <div className="flex justify-between items-center flex-row">
           <h2 className={title({ size: "sm" })}>Recent Posts</h2>
           <Link
-            isExternal
             size="lg"
             className={buttonStyles({
               color: undefined,
