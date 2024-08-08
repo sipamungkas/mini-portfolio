@@ -1,4 +1,4 @@
-import { convertIsoToDate } from "@/utils/date";
+import { convertTimestampToDate } from "@/utils/date";
 import { trimText } from "@/utils/text";
 import { Card, CardBody, CardHeader } from "@nextui-org/card";
 import { Link } from "@nextui-org/link";
@@ -21,7 +21,7 @@ function PostItem({ title, description, date }: PostItemProps) {
           <div className="flex flex-1 flex-col md:flex-row md:items-center md:justify-between">
             <h4 className="font-bold text-large">{title}</h4>
             <p className="text-small mt-2 md:text-right tracking-tight inline font-semibold from-[#FF1CF7] to-[#b249f8] bg-clip-text text-transparent bg-gradient-to-b opacity-90">
-              {convertIsoToDate(date)}
+              {convertTimestampToDate(date)}
             </p>
           </div>
         </CardHeader>

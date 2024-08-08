@@ -6,3 +6,13 @@ export function convertIsoToDate(isoDate: string): string {
 
   return `${day} ${month} ${year}`;
 }
+
+export function convertTimestampToDate(isoDate: string): string {
+  const date = new Date(isoDate);
+  const day = date.getUTCDate();
+  const month = date.toLocaleString("en-US", { month: "long" });
+
+  const year = date.getUTCFullYear();
+
+  return `${day} ${month} ${year}`;
+}
