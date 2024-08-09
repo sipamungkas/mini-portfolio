@@ -19,10 +19,10 @@ const ProjectItem = ({
   return (
     <Card
       isBlurred
+      isHoverable
+      isPressable
       className="border-none bg-background/60 dark:bg-default-100/50 w-full hover:scale-105"
       shadow="sm"
-      isPressable
-      isHoverable
     >
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
         <h4 className="font-bold text-large">{title}</h4>
@@ -31,13 +31,13 @@ const ProjectItem = ({
       </CardHeader>
       <CardBody className="overflow-visible py-2">
         <Image
-          as={NextImage}
           alt="Card background"
+          as={NextImage}
           className="object-cover rounded-xl"
-          src={image}
-          width={1024}
           height={500}
           layout="responsive"
+          src={image}
+          width={1024}
         />
       </CardBody>
     </Card>

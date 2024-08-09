@@ -1,7 +1,7 @@
 import PostItem from "@/components/post-item";
 import { title } from "@/components/primitives";
 
-interface User {
+export interface User {
   name: string;
   username: string;
   twitter_username: string | null;
@@ -12,7 +12,7 @@ interface User {
   profile_image_90: string;
 }
 
-interface Article {
+export interface Article {
   type_of: string;
   id: number;
   title: string;
@@ -49,25 +49,23 @@ async function getData() {
 
     return resJson;
   } catch (error: any) {
-    return Response.json({
-      error: error?.message ?? "Something went wrong!",
-      data: [],
-    });
+    return [];
   }
 }
 
 export default async function BlogPage() {
   const data: Article[] = await getData();
-  console.log({ data });
 
   return (
     <div>
       <h1 className={title()}>Blog</h1>
       {data.map((post) => (
-        <div className="mt-8 flex flex-col gap-8">
+        <div key={post.id} className="mt-8 flex flex-col gap-8">
           <PostItem
             date={post.published_at!}
             description={post.description}
+            id={post.id.toString()}
+            slug={post.slug}
             title={post.title}
           />
         </div>
