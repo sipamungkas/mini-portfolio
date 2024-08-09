@@ -1,15 +1,68 @@
 import { Link } from "@nextui-org/link";
-
 import { Image } from "@nextui-org/image";
 import { Divider } from "@nextui-org/divider";
 import { button as buttonStyles } from "@nextui-org/theme";
+import NextImage from "next/image";
 
 import { title } from "@/components/primitives";
-import NextImage from "next/image";
 import ProjectItem from "@/components/project-item";
 import PostItem from "@/components/post-item";
 
-export default function Home() {
+export interface User {
+  name: string;
+  username: string;
+  twitter_username: string | null;
+  github_username: string;
+  user_id: number;
+  website_url: string;
+  profile_image: string;
+  profile_image_90: string;
+}
+
+export interface Article {
+  type_of: string;
+  id: number;
+  title: string;
+  description: string;
+  published: boolean;
+  published_at: string | null;
+  slug: string;
+  path: string;
+  url: string;
+  comments_count: number;
+  public_reactions_count: number;
+  page_views_count: number;
+  published_timestamp: string;
+  body_markdown: string;
+  positive_reactions_count: number;
+  cover_image: string | null;
+  tag_list: string[];
+  canonical_url: string;
+  reading_time_minutes: number;
+  user: User;
+}
+
+async function getData() {
+  try {
+    const posts = await fetch("https://dev.to/api/articles/me/all?per_page=3", {
+      headers: {
+        "api-key": process.env.DEV_TO_API_KEY as string,
+      },
+      next: {
+        revalidate: 3600 * 24,
+      },
+    });
+    const resJson = await posts.json();
+
+    return resJson;
+  } catch (error: any) {
+    return [];
+  }
+}
+
+export default async function Home() {
+  const data: Article[] = await getData();
+
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 md:px-12">
       <div className="flex justify-between">
@@ -37,14 +90,14 @@ export default function Home() {
           </p>
         </div>
         <Image
-          as={NextImage}
           isBlurred
-          width={150}
-          height={150}
-          src="/images/me.jpg"
           alt="Ragil's Photo"
+          as={NextImage}
           className="m-5"
+          height={150}
           radius="full"
+          src="/images/me.jpg"
+          width={150}
         />
       </div>
 
@@ -53,13 +106,13 @@ export default function Home() {
           <h2 className={title({ size: "sm" })}>Experience</h2>
           <Link
             isExternal
-            size="lg"
             className={buttonStyles({
               color: undefined,
               radius: "full",
               variant: "ghost",
             })}
             href={"/resume.pdf"}
+            size="lg"
           >
             Resume
           </Link>
@@ -124,9 +177,9 @@ export default function Home() {
               provided by the UI/UX Division.
             </li>
             <li>
-              Successfully delivered the 'Master Event' app for The ICIFPRH
-              2019, utilizing React Native to meet all functional and aesthetic
-              requirements.
+              Successfully delivered the &apos;Master Event&apos; app for The
+              ICIFPRH 2019, utilizing React Native to meet all functional and
+              aesthetic requirements.
             </li>
           </ul>
           <Divider className="mt-8 md:mt-12 h-0.5" />
@@ -137,30 +190,29 @@ export default function Home() {
         <div className="flex justify-between items-center flex-row">
           <h2 className={title({ size: "sm" })}>Latest Projects</h2>
           <Link
-            isExternal
-            size="lg"
             className={buttonStyles({
               color: undefined,
               radius: "full",
               variant: "ghost",
             })}
             href={"/projects"}
+            size="lg"
           >
             View All
           </Link>
         </div>
         <div className="mt-8 grid md:grid-cols-2 gap-8">
           <ProjectItem
-            stack="React Native, Socket.io, ReactJS, ExpressJs, Firebase, Typescript"
-            image="/images/projects/dl/cover.png"
-            title="Daily Language"
             description="Interactive English course mobile app featuring comprehensive stats tracking, real-time text messaging, and real-time voice chat functionalities, ensuring an immersive and effective learning experience using react native, reactjs and express.js"
+            image="/images/projects/dl/cover.png"
+            stack="React Native, Socket.io, ReactJS, ExpressJs, Firebase, Typescript"
+            title="Daily Language"
           />
           <ProjectItem
-            stack="React Native, Socket.io, ReactJS, ExpressJs, Firebase, Typescript"
-            image="/images/projects/dl/cover.png"
-            title="Daily Language"
             description="Interactiveive stats tracking, real-time text messaging, and real-time voice chat functionalities, ensuring an immersive and effective learning experience using react native, reactjs and express.js"
+            image="/images/projects/dl/cover.png"
+            stack="React Native, Socket.io, ReactJS, ExpressJs, Firebase, Typescript"
+            title="Daily Language"
           />
         </div>
       </div>
@@ -169,25 +221,28 @@ export default function Home() {
         <div className="flex justify-between items-center flex-row">
           <h2 className={title({ size: "sm" })}>Recent Posts</h2>
           <Link
-            isExternal
-            size="lg"
             className={buttonStyles({
               color: undefined,
               radius: "full",
               variant: "ghost",
             })}
             href={"/blog"}
+            size="lg"
           >
             View All
           </Link>
         </div>
-        <div className="mt-8 flex flex-col gap-8">
-          <PostItem
-            title="Krealogi — UX Case Study Simple CRM (Customer Relationship Management)"
-            description="This time I will briefly review the UX Case Study of the Krealogi application for the Android platform. The UX Case study I discuss in this article focuses on the Simple CRM (Customer Relationship Management) feature"
-            date="2021-11-20T00:00:00.000Z"
-          />
-        </div>
+        {data.map((post) => (
+          <div key={post.id} className="mt-8 flex flex-col gap-8">
+            <PostItem
+              date={post.published_at!}
+              description={post.description}
+              id={post.id.toString()}
+              slug={post.slug}
+              title={post.title}
+            />
+          </div>
+        ))}
       </div>
     </section>
   );

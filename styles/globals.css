@@ -1,3 +1,104 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.markdown {
+  line-height: 1.8;
+
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.markdown img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.markdown h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+
+  font-weight: bold;
+}
+
+.markdown h2 {
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+
+  font-weight: bold;
+}
+
+.markdown h3 {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown p {
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+}
+
+.markdown a {
+  text-decoration: underline;
+}
+
+.markdown blockquote {
+  border-left: 4px solid #cbd5e0;
+  padding-left: 1rem;
+
+  margin: 1.5rem 0;
+  font-style: italic;
+
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.markdown ul {
+  @apply marker:text-[#b249f8] list-outside list-disc ml-6 gap-1 flex flex-col text-lg font-normal;
+}
+
+.markdwon li > p {
+  margin-bottom: 0;
+}
+
+.markdown a:has(> img) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.markdown a > img {
+  @apply object-contain hover:scale-105 transition-transform;
+}
+
+.markdown code {
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: "Fira Code", monospace;
+}
+
+.markdown pre {
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+
+  font-family: "Fira Code", monospace;
+  font-size: 0.875rem;
+}
+
+.markdown hr {
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+  margin: 2rem 0;
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  .markdown img {
+    background-color: #fbfbfb;
+  }
+}
