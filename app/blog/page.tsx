@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import PostItem from "@/components/post-item";
 import { title } from "@/components/primitives";
 
@@ -34,6 +36,10 @@ export interface Article {
   reading_time_minutes: number;
   user: User;
 }
+
+export const metadata: Metadata = {
+  title: "Blog",
+};
 
 async function getData() {
   try {
