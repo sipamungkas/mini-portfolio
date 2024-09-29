@@ -26,10 +26,10 @@ COPY . .
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED=1
-ARG BASE_URL
-ENV BASE_URL=${BASE_URL}
-ARG DEV_TO_API_KEY
-ENV DEV_TO_API_KEY=${DEV_TO_API_KEY}
+# ARG BASE_URL
+# ENV BASE_URL=${BASE_URL}
+# ARG DEV_TO_API_KEY
+# ENV DEV_TO_API_KEY=${DEV_TO_API_KEY}
 
 
 RUN \
