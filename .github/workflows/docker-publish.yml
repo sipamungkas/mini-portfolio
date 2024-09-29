@@ -32,9 +32,6 @@ jobs:
       id-token: write
 
     steps:
-      - name: Debug Secrets
-          run: echo "BASE_URL is set to ${{ secrets.BASE_URL }} DEV_TO_API_KEY is set to ${{ secrets.DEV_TO_API_KEY }}"
-          
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -70,6 +67,12 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
+      - name: Debug Secrets
+        run: |
+          echo "BASE_URL is set to $BASE_URL DEV_TO_API_KEY is set to $DEV_TO_API_KEY"
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          DEV_TO_API_KEY: ${{ secrets.DEV_TO_API_KEY }}
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image
