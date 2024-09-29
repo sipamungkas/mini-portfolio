@@ -32,6 +32,9 @@ jobs:
       id-token: write
 
     steps:
+      - name: Debug Secrets
+          run: echo "BASE_URL is set to ${{ secrets.BASE_URL }} DEV_TO_API_KEY is set to ${{ secrets.DEV_TO_API_KEY }}"
+          
       - name: Checkout repository
         uses: actions/checkout@v4
 
