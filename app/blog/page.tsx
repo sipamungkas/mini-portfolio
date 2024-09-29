@@ -65,7 +65,7 @@ export default async function BlogPage() {
   return (
     <div>
       <h1 className={title()}>Blog</h1>
-      {data.map((post) => (
+      {data?.map((post) => (
         <div key={post.id} className="mt-8 flex flex-col gap-8">
           <PostItem
             date={post.published_at!}

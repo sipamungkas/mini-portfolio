@@ -232,7 +232,7 @@ export default async function Home() {
             View All
           </Link>
         </div>
-        {data.map((post) => (
+        {data?.map((post) => (
           <div key={post.id} className="mt-8 flex flex-col gap-8">
             <PostItem
               date={post.published_at!}
