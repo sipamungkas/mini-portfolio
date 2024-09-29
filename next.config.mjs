@@ -4,6 +4,13 @@ import createMDX from "@next/mdx";
 const nextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   output: "standalone",
+  env: {
+    DEV_TO_API_KEY: process.env.DEV_TO_API_KEY,
+    BASE_URL: process.env.BASE_URL,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   experimental: {
     mdxRs: true,
