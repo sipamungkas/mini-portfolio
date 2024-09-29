@@ -67,12 +67,27 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      - name: Debug Secrets
+      - name: Check if BASE_URL is set
         run: |
-          echo "BASE_URL is set to $BASE_URL DEV_TO_API_KEY is set to $DEV_TO_API_KEY"
+          if [ -z "$BASE_URL" ]; then
+            echo "BASE_URL is not set."
+          else
+            echo "BASE_URL is set."
+          fi
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
+
+      - name: Check if DEV_TO_API_KEY is set
+        run: |
+          if [ -z "$DEV_TO_API_KEY" ]; then
+            echo "DEV_TO_API_KEY is not set."
+          else
+            echo "DEV_TO_API_KEY is set."
+          fi
+        env:
           DEV_TO_API_KEY: ${{ secrets.DEV_TO_API_KEY }}
+        continue-on-error: false
+
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image
