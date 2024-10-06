@@ -106,4 +106,4 @@ jobs:
       uses: sozo-design/curl@v1.0.2
       with:
         args: ${{ secrets.DOKPLOY_WEBHOOK}}
-      needs: build
+    needs: build
