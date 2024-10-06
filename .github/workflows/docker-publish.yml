@@ -99,10 +99,11 @@ jobs:
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
-  trigger_dokploy:
+  trigger-dokploy:
     runs-on: ubuntu-latest
     steps:
-      - name: curl
-      uses: enflo/curl-action@master
+    - name: hit_webhook
+      uses: sozo-design/curl@v1.0.2
       with:
-        curl: {{ secrets.DOKPLOY_WEBHOOK }}
+        args: ${{ secrets.DOKPLOY_WEBHOOK}}
+      needs: [build]
